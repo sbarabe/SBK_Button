@@ -1,13 +1,12 @@
 #######################################
-# Syntax Coloring Map For SBK_AvrBuzzer
+# Syntax Coloring Map For SBK_Buttons
 #######################################
 
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
 
-Buzzer	KEYWORD1
-OutputMode	KEYWORD1
+Button	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -15,21 +14,18 @@ OutputMode	KEYWORD1
 
 begin	KEYWORD2
 update	KEYWORD2
-playTone	KEYWORD2
-playChirp	KEYWORD2
-stop	KEYWORD2
-setMode	KEYWORD2
-enableDifferential	KEYWORD2
-isPlaying	KEYWORD2
-isDifferential	KEYWORD2
-mute	KEYWORD2
-unmute	KEYWORD2
-isMuted	KEYWORD2
-
-#######################################
-# Constants (LITERAL1)
-#######################################
-
-NO_PIN	LITERAL1
-SINGLE_ENDED	LITERAL1
-DIFFERENTIAL	LITERAL1
+setDebounceDelay	KEYWORD2
+isPressed	KEYWORD2
+isReleased	KEYWORD2
+justPressed	KEYWORD2
+justReleased	KEYWORD2
+setLongPressDuration	KEYWORD2
+longPressDuration	KEYWORD2
+isLongPressed	KEYWORD2
+justLongPressed	KEYWORD2
+clearJustPressed	KEYWORD2
+clearJustReleased	KEYWORD2
+clearJustLongPressed	KEYWORD2
+clearEvents	KEYWORD2
+pressedTime	KEYWORD2
+releasedTime	KEYWORD2

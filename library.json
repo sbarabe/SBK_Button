@@ -1,21 +1,21 @@
 {
-  "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
-  "name": "SBK_AvrBuzzer",
+  "name": "SBK_Buttons",
   "version": "1.0.0",
-  "description": "Non-blocking passive piezo buzzer library for AVR-based Arduino boards using Timer1.",
+  "description": "Lightweight button library for AVR-based Arduino boards with debouncing, edge events, long-press detection, and press timing.",
   "keywords": [
-    "buzzer",
-    "piezo",
-    "tone",
-    "chirp",
-    "timer1",
+    "button",
+    "pushbutton",
+    "debounce",
+    "input",
+    "long-press",
+    "event",
     "avr",
     "arduino",
     "non-blocking"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sbarabe/SBK_AvrBuzzer.git"
+    "url": "https://github.com/sbarabe/SBK_Buttons.git"
   },
   "authors": [
     {
@@ -25,6 +25,5 @@
   ],
   "license": "MIT",
   "frameworks": "arduino",
-  "platforms": "atmelavr",
-  "headers": "SBK_AvrBuzzer.h"
+  "platforms": "atmelavr"
 }
