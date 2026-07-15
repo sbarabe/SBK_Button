@@ -1,0 +1,35 @@
+#######################################
+# Syntax Coloring Map For SBK_AvrBuzzer
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Buzzer	KEYWORD1
+OutputMode	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+update	KEYWORD2
+playTone	KEYWORD2
+playChirp	KEYWORD2
+stop	KEYWORD2
+setMode	KEYWORD2
+enableDifferential	KEYWORD2
+isPlaying	KEYWORD2
+isDifferential	KEYWORD2
+mute	KEYWORD2
+unmute	KEYWORD2
+isMuted	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+NO_PIN	LITERAL1
+SINGLE_ENDED	LITERAL1
+DIFFERENTIAL	LITERAL1
