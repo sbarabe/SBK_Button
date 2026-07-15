@@ -17,7 +17,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Added
 
-- Initial public release of SBK_Buttons.
+- Initial public release of SBK_Button.
 - Non-blocking software debouncing.
 - Configurable debounce delay with a 50 ms default.
 - Active-low and active-high button support.
@@ -34,5 +34,5 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - PlatformIO Registry metadata.
 - Installation, wiring, examples, and API documentation.
 
-[Unreleased]: https://github.com/sbarabe/SBK_Buttons/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/sbarabe/SBK_Buttons/releases/tag/v1.0.0
+[Unreleased]: https://github.com/sbarabe/SBK_Button/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/sbarabe/SBK_Button/releases/tag/v1.0.0

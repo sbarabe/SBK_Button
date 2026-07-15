@@ -1,5 +1,5 @@
 {
-  "name": "SBK_Buttons",
+  "name": "SBK_Button",
   "version": "1.0.0",
   "description": "Lightweight button library for AVR-based Arduino boards with debouncing, edge events, long-press detection, and press timing.",
   "keywords": [
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sbarabe/SBK_Buttons.git"
+    "url": "https://github.com/sbarabe/SBK_Button.git"
   },
   "authors": [
     {

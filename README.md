@@ -1,6 +1,6 @@
-# SBK_Buttons
+# SBK_Button
 
-**SBK_Buttons** is a lightweight push-button library for Arduino-compatible platforms. It provides the `Button` class for non-blocking debouncing, press and release events, long-press detection, and press/release duration tracking.
+**SBK_Button** is a lightweight push-button library for Arduino-compatible platforms. It provides the `Button` class for non-blocking debouncing, press and release events, long-press detection, and press/release duration tracking.
 
 The `Button` class supports both active-low and active-high button circuits. Active-low buttons can use the microcontroller's internal pull-up resistor or an external pull-up resistor.
 
@@ -24,7 +24,7 @@ The `Button` class supports both active-low and active-high button circuits. Act
 
 ## Compatibility
 
-**SBK_Buttons** uses only the standard Arduino API and is compatible with virtually all Arduino-supported architectures, including:
+**SBK_Button** uses only the standard Arduino API and is compatible with virtually all Arduino-supported architectures, including:
 
 - AVR
 - megaAVR
@@ -44,7 +44,7 @@ The `Button` class supports both active-low and active-high button circuits. Act
 Search for:
 
 ```text
-SBK_Buttons
+SBK_Button
 ```
 
 ### Manual Installation
@@ -59,7 +59,7 @@ Add the library to `platformio.ini`:
 
 ```ini
 lib_deps =
-    SBK_Buttons
+    SBK_Button
 ```
 
 ---
