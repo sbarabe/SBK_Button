@@ -20,9 +20,9 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - Initial public release of SBK_Button.
 - Non-blocking software debouncing.
 - Configurable debounce delay with a 50 ms default.
+- Three type-safe button wiring modes through `ButtonMode`:
+  internal pull-up, external pull-up, and external pull-down.
 - Active-low and active-high button support.
-- Internal pull-up support for active-low buttons.
-- Support for active-low buttons using an external pull-up resistor.
 - Continuous pressed and released state queries.
 - One-cycle press and release events.
 - Configurable long-press threshold with a 1000 ms default.

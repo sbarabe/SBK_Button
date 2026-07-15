@@ -8,7 +8,7 @@
 //
 // SPDX-License-Identifier: MIT
 //
-// Lightweight push-button library for Arduino-compatible AVR boards.
+// Lightweight push-button library for Arduino-compatible platforms.
 //
 // Features:
 //   - Debouncing

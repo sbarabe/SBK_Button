@@ -1,7 +1,7 @@
 {
   "name": "SBK_Button",
   "version": "1.0.0",
-  "description": "Lightweight button library for AVR-based Arduino boards with debouncing, edge events, long-press detection, and press timing.",
+  "description": "Lightweight Arduino button library with debouncing, edge events, long-press detection, and press timing.",
   "keywords": [
     "button",
     "pushbutton",
@@ -9,7 +9,6 @@
     "input",
     "long-press",
     "event",
-    "avr",
     "arduino",
     "non-blocking"
   ],

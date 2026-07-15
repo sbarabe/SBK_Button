@@ -180,7 +180,23 @@ Button(uint8_t pin,
 | Parameter | Description |
 |---|---|
 | `pin` | Arduino GPIO connected to the button. |
-| `mode` | Wiring configuration: `INTERNAL_PULLUP`, `EXTERNAL_PULLUP`, or `EXTERNAL_PULLDOWN`. |
+| `mode` | Wiring configuration: `ButtonMode::INTERNAL_PULLUP`, `ButtonMode::EXTERNAL_PULLUP`, or `ButtonMode::EXTERNAL_PULLDOWN`. |
+
+---
+
+## ButtonMode
+
+### `enum class ButtonMode`
+
+Selects how the button is wired to the microcontroller.
+
+| Value | Description |
+|---|---|
+| `ButtonMode::INTERNAL_PULLUP` | Uses the MCU's internal pull-up resistor. Connect the button between the GPIO pin and **GND**. |
+| `ButtonMode::EXTERNAL_PULLUP` | Uses an external pull-up resistor. Connect the button between the GPIO pin and **GND**. |
+| `ButtonMode::EXTERNAL_PULLDOWN` | Uses an external pull-down resistor. Connect the button between the GPIO pin and **VCC**. |
+
+Note: ButtonMode::INTERNAL_PULLUP is the default configuration and is recommended whenever possible because it requires no external resistor.
 
 ---
 
