@@ -1,8 +1,8 @@
 # SBK_Buttons
 
-**SBK_Buttons** is a lightweight push-button library for AVR-based Arduino boards. It provides non-blocking debouncing, press and release events, long-press detection, and press/release duration tracking.
+**SBK_Buttons** is a lightweight push-button library for Arduino-compatible platforms. It provides the `Button` class for non-blocking debouncing, press and release events, long-press detection, and press/release duration tracking.
 
-The library supports both active-low and active-high button circuits. Active-low buttons can use the microcontroller's internal pull-up resistor or an external pull-up resistor.
+The `Button` class supports both active-low and active-high button circuits. Active-low buttons can use the microcontroller's internal pull-up resistor or an external pull-up resistor.
 
 ---
 
@@ -22,16 +22,18 @@ The library supports both active-low and active-high button circuits. Active-low
 
 ---
 
-## Supported Boards
+## Compatibility
 
-SBK_Buttons is designed for AVR-based Arduino boards, including:
+**SBK_Buttons** uses only the standard Arduino API and is compatible with virtually all Arduino-supported architectures, including:
 
-- Arduino Uno
-- Arduino Nano
-- Arduino Pro Mini
-- ATmega328P
-- ATmega328PB
-- Other AVR boards supported by the Arduino framework
+- AVR
+- megaAVR
+- SAMD
+- ESP8266
+- ESP32
+- RP2040
+- STM32
+- Renesas RA (Uno R4)
 
 ---
 
@@ -125,7 +127,7 @@ void loop()
 }
 ```
 
-Call `update()` once during every iteration of `loop()`. Event functions such as `justPressed()` are valid only until the next call to `update()`.
+Call `Button::update()` once during every iteration of `loop()`. Event functions such as `justPressed()` are valid only until the next call to `update()`.
 
 ---
 
@@ -186,11 +188,11 @@ Button(uint8_t pin,
 
 #### `void begin()`
 
-Configures the GPIO and initializes the internal state without generating a false startup event.
+Configures the `Button` object's GPIO and initializes its internal state without generating a false startup event.
 
 #### `void update()`
 
-Reads and debounces the GPIO, updates timing values, and generates one-cycle events. Call it repeatedly from `loop()`.
+Reads and debounces the `Button` object's GPIO, updates timing values, and generates one-cycle events. Call it repeatedly from `loop()`.
 
 ### Configuration
 
