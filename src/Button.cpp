@@ -12,9 +12,9 @@
 
 #include "Button.h"
 
-Button::Button(uint8_t pin, bool activeHigh, bool useExternalPullup)
-    : _pin(pin), _activeHigh(activeHigh),
-      _useExternalPullup(useExternalPullup),
+Button::Button(uint8_t pin, ButtonWiring mode)
+    : _pin(pin),
+      _mode(mode),
       _currentState(false),
       _previousState(false),
       _lastReading(false),
@@ -28,22 +28,27 @@ Button::Button(uint8_t pin, bool activeHigh, bool useExternalPullup)
       _pressedTime(0),
       _releaseStartTime(0),
       _releasedTime(0),
-      _longPressDuration(1000) // Default long press duration set to 1000 ms
+      _longPressDelay(1000) // Default long press delay set to 1000 ms
 {
 }
 
 void Button::begin()
 {
-    // Configure the GPIO.
-    // - Active HIGH buttons require an external pull-down resistor.
-    // - Active LOW buttons can use the MCU's internal pull-up resistor.
-    if (_activeHigh || _useExternalPullup)
+    // Configure the GPIO according to the selected wiring mode.
+    switch (_mode)
     {
-        pinMode(_pin, INPUT);
-    }
-    else
-    {
+    case ButtonWiring::INTERNAL_PULLUP:
         pinMode(_pin, INPUT_PULLUP);
+        break;
+
+    case ButtonWiring::EXTERNAL_PULLUP:
+    case ButtonWiring::EXTERNAL_PULLDOWN:
+        pinMode(_pin, INPUT);
+        break;
+
+    default:
+        pinMode(_pin, INPUT_PULLUP);
+        break;
     }
 
     // Read the initial pin state.
@@ -110,13 +115,12 @@ void Button::update()
         _longPressReported = false;
     }
 
-    // Generate one long-press event when the configured duration is reached.
-    if (isPressed() && !_longPressReported && pressedTime() >= _longPressDuration)
+    // Generate one long-press event when the configured delay is reached.
+    if (isPressed() && !_longPressReported && pressedTime() >= _longPressDelay)
     {
         _justLongPressed = true;
-        _longPressReported = true;// Prevent multiple long press events for the same press.
+        _longPressReported = true; // Prevent multiple long press events for the same press.
     }
-
 }
 
 // Returns the electrical level corresponding to a pressed button.
@@ -125,7 +129,7 @@ void Button::update()
 //   - Active HIGH buttons (pressed = HIGH)
 bool Button::_activeState() const
 {
-    return _activeHigh ? HIGH : LOW;
+    return _mode == ButtonWiring::EXTERNAL_PULLDOWN ? HIGH : LOW;
 }
 
 void Button::_pressedTimeUpdate(uint32_t now)
@@ -178,8 +182,8 @@ void Button::clearEvents()
 }
 
 // Returns true while the button has been pressed
-// for at least the specified duration (milliseconds).
+// for at least the specified delay (milliseconds).
 bool Button::isLongPressed() const
 {
-    return isPressed() && (pressedTime() >= _longPressDuration);
+    return isPressed() && (pressedTime() >= _longPressDelay);
 }

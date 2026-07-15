@@ -12,7 +12,7 @@ The `Button` class supports both active-low and active-high button circuits. Act
 - Configurable software debouncing
 - Pressed and released state detection
 - One-cycle `justPressed()` and `justReleased()` events
-- Configurable long-press duration
+- Configurable long-press delay
 - One-cycle `justLongPressed()` event
 - Continuous `isLongPressed()` state
 - Pressed-time and released-time tracking
@@ -81,7 +81,9 @@ The GPIO is configured as `INPUT_PULLUP`. The button is considered pressed when 
 Connect an external pull-up resistor between the GPIO pin and VCC, and connect the button between the GPIO pin and GND.
 
 ```cpp
-Button button(2, false, true);
+Button externalPullup(
+    2,
+    ButtonMode::EXTERNAL_PULLUP);
 ```
 
 The GPIO is configured as `INPUT` because the external resistor supplies the pull-up.
@@ -91,7 +93,9 @@ The GPIO is configured as `INPUT` because the external resistor supplies the pul
 Connect an external pull-down resistor between the GPIO pin and GND, and connect the button between the GPIO pin and VCC.
 
 ```cpp
-Button button(2, true);
+Button externalPulldown(
+    2,
+    ButtonMode::EXTERNAL_PULLDOWN);
 ```
 
 The GPIO is configured as `INPUT`. AVR Arduino boards do not provide an internal pull-down resistor.
@@ -142,7 +146,7 @@ void setup()
 {
     Serial.begin(9600);
 
-    button.setLongPressDuration(1500);
+    button.setLongPressDelay(1500);
     button.begin();
 }
 
@@ -170,15 +174,13 @@ void loop()
 
 ```cpp
 Button(uint8_t pin,
-       bool activeHigh = false,
-       bool useExternalPullup = false);
+       ButtonMode mode = ButtonMode::INTERNAL_PULLUP);
 ```
 
 | Parameter | Description |
 |---|---|
 | `pin` | Arduino GPIO connected to the button. |
-| `activeHigh` | `false` for active-low operation; `true` for active-high operation. |
-| `useExternalPullup` | For active-low operation, `true` disables the internal pull-up because an external pull-up is connected. |
+| `mode` | Wiring configuration: `INTERNAL_PULLUP`, `EXTERNAL_PULLUP`, or `EXTERNAL_PULLDOWN`. |
 
 ---
 
@@ -200,11 +202,11 @@ Reads and debounces the `Button` object's GPIO, updates timing values, and gener
 
 Sets the debounce delay in milliseconds. The default is `50 ms`.
 
-#### `void setLongPressDuration(uint32_t duration)`
+#### `void setLongPressDelay(uint32_t delay)`
 
 Sets the long-press threshold in milliseconds. The default is `1000 ms`.
 
-#### `uint32_t longPressDuration() const`
+#### `uint32_t longPressDelay() const`
 
 Returns the configured long-press threshold in milliseconds.
 
@@ -271,7 +273,7 @@ Clears all three one-cycle event flags.
 - Call `begin()` once before calling `update()`.
 - Call `update()` frequently and avoid long blocking delays.
 - Read one-cycle events after `update()` and before the next update.
-- `justLongPressed()` takes no argument. Configure its threshold with `setLongPressDuration()`.
+- `justLongPressed()` takes no argument. Configure its threshold with `setLongPressDelay()`.
 - Active-high buttons require an external pull-down resistor.
 - `useExternalPullup` applies to active-low wiring and disables the internal pull-up.
 

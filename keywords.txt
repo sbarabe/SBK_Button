@@ -19,8 +19,8 @@ isPressed	KEYWORD2
 isReleased	KEYWORD2
 justPressed	KEYWORD2
 justReleased	KEYWORD2
-setLongPressDuration	KEYWORD2
-longPressDuration	KEYWORD2
+setLongPressDelay	KEYWORD2
+longPressDelay	KEYWORD2
 isLongPressed	KEYWORD2
 justLongPressed	KEYWORD2
 clearJustPressed	KEYWORD2

@@ -20,16 +20,29 @@
 // Licensed under the MIT License.
 //=====================================================================
 
+// Button mode enumeration.
+enum class ButtonWiring : uint8_t
+{
+    INTERNAL_PULLUP,
+    EXTERNAL_PULLUP,
+    EXTERNAL_PULLDOWN
+};
+
 class Button
 {
 public:
     // Creates a button object.
-    // pin        : Arduino GPIO connected to the push button.
-    // activeHigh : true  = button is pressed when pin is HIGH.
-    //              false = button is pressed when pin is LOW.
-    // useExternalPullup : true  = button uses an external pull-up resistor.
-    //                     false = button uses internal pull-up resistor if activeLow.
-    Button(uint8_t pin, bool activeHigh = false, bool useExternalPullup = false);
+    //
+    // pin  : MCU GPIO connected to the push button.
+    // mode : Button wiring configuration.
+    //        defaults to INTERNAL_PULLUP, which uses the MCU's internal pull-up resistor.
+    //
+    // Examples:
+    //
+    // Button(2) >>> is the same as : Button(2, ButtonWiring::INTERNAL_PULLUP);
+    // Button(3, ButtonWiring::EXTERNAL_PULLUP);
+    // Button(4, ButtonWiring::EXTERNAL_PULLDOWN);
+    Button(uint8_t pin, ButtonWiring mode = ButtonWiring::INTERNAL_PULLUP);
 
     // Initializes the GPIO pin.
     // Active LOW buttons automatically enable the internal pull-up resistor.
@@ -57,19 +70,19 @@ public:
     // from pressed to released.
     bool justReleased() const { return _justReleased; }
 
-    // Sets the duration required to recognize a long press.
+    // Sets the delay required to recognize a long press.
     // Default value is 1000 ms.
-    void setLongPressDuration(uint32_t duration) { _longPressDuration = duration; }
+    void setLongPressDelay(uint32_t delay) { _longPressDelay = delay; }
 
-    // Returns the configured long-press duration, in milliseconds.
-    uint32_t longPressDuration() const { return _longPressDuration; }
+    // Returns the configured long-press delay, in milliseconds.
+    uint32_t longPressDelay() const { return _longPressDelay; }
 
     // Returns true once when the button is pressed for at
     // least the set duration (milliseconds)
     bool isLongPressed() const;
 
     // Returns true for one update cycle when the button
-    // reaches the configured long-press duration.
+    // reaches the configured long-press delay.
     bool justLongPressed() const { return _justLongPressed; }
 
     // Clears the justPressed state before the update call.
@@ -117,15 +130,11 @@ private:
     // Arduino GPIO pin number.
     uint8_t _pin;
 
-    // Button polarity.
-    // false = Active LOW
-    // true  = Active HIGH
-    bool _activeHigh;
-
-    // True if an external pull-up resistor is used.
-    // When false and the button is active LOW,
-    // the internal pull-up resistor is enabled.
-    bool _useExternalPullup;
+    // Button mode.
+    // INTERNAL_PULLUP  -> The button is active LOW and uses the MCU's internal pull-up resistor.
+    // EXTERNAL_PULLUP  -> The button is active LOW and uses an external pull-up resistor.
+    // EXTERNAL_PULLDOWN -> The button is active HIGH and uses an external pull-down resistor.
+    ButtonWiring _mode;
 
     // Current debounced electrical state (HIGH or LOW).
     bool _currentState;
@@ -142,7 +151,7 @@ private:
     // True if the button was just released.
     bool _justReleased;
 
-    // True if a long press was just long pressed.
+    // True if a long press was just detected.
     bool _justLongPressed;
 
     // True if a long press event has been reported for the current press.
@@ -166,6 +175,6 @@ private:
     // Time (millis) when the button was last released.
     uint32_t _releasedTime;
 
-    // Duration (milliseconds) for long press detection
-    uint32_t _longPressDuration;
+    // Delay (milliseconds) for long press detection
+    uint32_t _longPressDelay;
 };
