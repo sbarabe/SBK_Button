@@ -17,7 +17,7 @@ The `Button` class supports both active-low and active-high button circuits. Act
 - Continuous `isLongPressed()` state
 - Pressed-time and released-time tracking
 - Active-low and active-high input support
-- Optional internal pull-up resistor for active-low buttons
+- Support for internal pull-up, external pull-up, and external pull-down wiring
 - Event-clearing helpers
 
 ---
@@ -196,7 +196,7 @@ Selects how the button is wired to the microcontroller.
 | `ButtonMode::EXTERNAL_PULLUP` | Uses an external pull-up resistor. Connect the button between the GPIO pin and **GND**. |
 | `ButtonMode::EXTERNAL_PULLDOWN` | Uses an external pull-down resistor. Connect the button between the GPIO pin and **VCC**. |
 
-Note: ButtonMode::INTERNAL_PULLUP is the default configuration and is recommended whenever possible because it requires no external resistor.
+**Note:** ButtonMode::INTERNAL_PULLUP is the default configuration and is recommended whenever possible because it requires no external resistor.
 
 ---
 
@@ -289,9 +289,8 @@ Clears all three one-cycle event flags.
 - Call `begin()` once before calling `update()`.
 - Call `update()` frequently and avoid long blocking delays.
 - Read one-cycle events after `update()` and before the next update.
-- `justLongPressed()` takes no argument. Configure its threshold with `setLongPressDelay()`.
-- Active-high buttons require an external pull-down resistor.
-- `useExternalPullup` applies to active-low wiring and disables the internal pull-up.
+- Configure the long-press threshold with `setLongPressDelay()`.
+- `ButtonMode::INTERNAL_PULLUP` is the recommended wiring configuration whenever possible.
 
 ---
 
