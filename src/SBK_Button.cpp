@@ -1,5 +1,5 @@
 //=====================================================================
-// Button Library - Implementation
+// SBK_Button Library - Implementation
 //=====================================================================
 //
 // SPDX-License-Identifier: MIT

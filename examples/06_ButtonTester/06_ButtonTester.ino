@@ -19,7 +19,7 @@
 //=====================================================================
 
 #include <Arduino.h>
-#include <Button.h>
+#include <SBK_Button.h>
 
 // Define the long-press delay in milliseconds.
 constexpr uint16_t LONG_PRESS_DELAY = 1000;

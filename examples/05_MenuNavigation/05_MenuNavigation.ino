@@ -20,7 +20,7 @@
 //=====================================================================
 
 #include <Arduino.h>
-#include <Button.h>
+#include <SBK_Button.h>
 
 // Button identifiers used to index the arrays.
 enum ButtonIndex : uint8_t

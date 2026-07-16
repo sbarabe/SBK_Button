@@ -105,7 +105,7 @@ The GPIO is configured as `INPUT`. AVR Arduino boards do not provide an internal
 ## Basic Example
 
 ```cpp
-#include <Button.h>
+#include <SBK_Button.h>
 
 Button button(2);
 
@@ -138,7 +138,7 @@ Call `Button::update()` once during every iteration of `loop()`. Event functions
 ## Long-Press Example
 
 ```cpp
-#include <Button.h>
+#include <SBK_Button.h>
 
 Button button(2);
 

@@ -21,7 +21,7 @@
 //=====================================================================
 
 #include <Arduino.h>
-#include <Button.h>
+#include <SBK_Button.h>
 
 constexpr uint8_t BUTTON_PIN = 2;
 
