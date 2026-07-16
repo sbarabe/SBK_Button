@@ -13,6 +13,12 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Fixed
 
+## [1.0.2] - 2026-07-16
+
+### Fixed
+
+- Updated the internal include in `SBK_Button.cpp` from `Button.h` to `SBK_Button.h`, fixing compilation of the PlatformIO package.
+
 ## [1.0.1] - 2026-07-16
 
 ### Changed

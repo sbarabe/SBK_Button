@@ -10,7 +10,7 @@
 // Licensed under the MIT License.
 //=====================================================================
 
-#include "Button.h"
+#include "SBK_Button.h"
 
 Button::Button(uint8_t pin, ButtonWiring mode)
     : _pin(pin),
