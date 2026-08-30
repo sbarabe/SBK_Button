@@ -63,7 +63,11 @@ void Button::begin()
 
 void Button::update()
 {
-    uint32_t now = millis();
+    update(millis());
+}
+
+void Button::update(uint32_t now)
+{
 
     // Reset events at the start of each update cycle. This ensures that events are only reported once per update.
     _justPressed = false;

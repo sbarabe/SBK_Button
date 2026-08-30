@@ -68,6 +68,11 @@ public:
     // This function should be called every iteration of loop().
     void update();
 
+    // Updates the button state using a caller-provided timestamp.
+    // Use this overload to synchronize multiple components to the same
+    // millis() value during one loop iteration.
+    void update(uint32_t now);
+
     // Returns true while the button is being held down.
     bool isPressed() const { return _currentState == _activeState(); };
 

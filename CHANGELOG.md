@@ -13,6 +13,16 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Fixed
 
+## [1.2.0] - 2026-08-30
+
+### Added
+
+- Added an `update(uint32_t now)` overload so applications can update buttons and other components with one synchronized timestamp.
+
+### Changed
+
+- The existing `update()` method now delegates to `update(millis())`, preserving compatibility while keeping the timing workflow in one implementation.
+
 ## [1.1.0] - 2026-08-30
 
 ### Added
@@ -62,7 +72,8 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - PlatformIO Registry metadata.
 - Installation, wiring, examples, and API documentation.
 
-[Unreleased]: https://github.com/sbarabe/SBK_Button/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/sbarabe/SBK_Button/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/sbarabe/SBK_Button/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/sbarabe/SBK_Button/compare/v1.0.3...v1.1.0
 [1.0.3]: https://github.com/sbarabe/SBK_Button/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/sbarabe/SBK_Button/compare/v1.0.1...v1.0.2

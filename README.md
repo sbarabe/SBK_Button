@@ -133,6 +133,17 @@ void loop()
 
 Call `Button::update()` once during every iteration of `loop()`. Event functions such as `justPressed()` are valid only until the next call to `update()`.
 
+For workflows that synchronize several components to one timestamp, read `millis()` once and pass it to the overload:
+
+```cpp
+void loop()
+{
+    uint32_t now = millis();
+    button.update(now);
+    // Update other components using the same value of now.
+}
+```
+
 ---
 
 ## Long-Press Example
@@ -234,7 +245,11 @@ Configures the `Button` object's GPIO and initializes its internal state without
 
 #### `void update()`
 
-Reads and debounces the `Button` object's GPIO, updates timing values, and generates one-cycle events. Call it repeatedly from `loop()`.
+Reads and debounces the button's GPIO using the current value of `millis()`, updates timing values, and generates one-cycle events.
+
+#### `void update(uint32_t now)`
+
+Performs the same update using the supplied millisecond timestamp. This overload is useful when multiple buttons or other components must use one synchronized time value during a loop iteration.
 
 ### Configuration
 
