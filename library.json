@@ -1,11 +1,12 @@
 {
   "name": "SBK_Button",
-  "version": "1.0.3",
-  "description": "Lightweight Arduino button library with debouncing, edge events, long-press detection, and press timing.",
+  "version": "1.1.0",
+  "description": "Lightweight Arduino button library with debouncing, logic inversion, edge events, long-press detection, and press timing.",
   "keywords": [
     "button",
     "pushbutton",
     "debounce",
+    "logic-inversion",
     "input",
     "long-press",
     "event",

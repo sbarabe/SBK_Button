@@ -12,9 +12,10 @@
 
 #include "SBK_Button.h"
 
-Button::Button(uint8_t pin, ButtonWiring mode)
+Button::Button(uint8_t pin, ButtonWiring mode, ButtonLogic logic)
     : _pin(pin),
       _mode(mode),
+      _logic(logic),
       _currentState(false),
       _previousState(false),
       _lastReading(false),
@@ -129,7 +130,8 @@ void Button::update()
 //   - Active HIGH buttons (pressed = HIGH)
 bool Button::_activeState() const
 {
-    return _mode == ButtonWiring::EXTERNAL_PULLDOWN ? HIGH : LOW;
+    bool activeState = _mode == ButtonWiring::EXTERNAL_PULLDOWN ? HIGH : LOW;
+    return _logic == ButtonLogic::INVERTED ? !activeState : activeState;
 }
 
 void Button::_pressedTimeUpdate(uint32_t now)

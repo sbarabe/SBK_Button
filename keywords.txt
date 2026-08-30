@@ -8,6 +8,7 @@
 
 Button	KEYWORD1
 ButtonWiring	KEYWORD1
+ButtonLogic	KEYWORD1
 
 #######################################
 # Constants (LITERAL1)
@@ -16,6 +17,8 @@ ButtonWiring	KEYWORD1
 INTERNAL_PULLUP	LITERAL1
 EXTERNAL_PULLUP	LITERAL1
 EXTERNAL_PULLDOWN	LITERAL1
+NORMAL	LITERAL1
+INVERTED	LITERAL1
 
 #######################################
 # Methods and Functions (KEYWORD2)

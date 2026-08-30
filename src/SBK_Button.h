@@ -28,21 +28,33 @@ enum class ButtonWiring : uint8_t
     EXTERNAL_PULLDOWN
 };
 
+// Button logic enumeration.
+enum class ButtonLogic : uint8_t
+{
+    NORMAL,
+    INVERTED
+};
+
 class Button
 {
 public:
     // Creates a button object.
     //
     // pin  : MCU GPIO connected to the push button.
-    // mode : Button wiring configuration.
+    // mode  : Button wiring configuration.
     //        defaults to INTERNAL_PULLUP, which uses the MCU's internal pull-up resistor.
+    // logic : Logical interpretation of the electrical input.
+    //         defaults to ButtonLogic::NORMAL. ButtonLogic::INVERTED swaps pressed and released.
     //
     // Examples:
     //
     // Button(2) >>> is the same as : Button(2, ButtonWiring::INTERNAL_PULLUP);
     // Button(3, ButtonWiring::EXTERNAL_PULLUP);
     // Button(4, ButtonWiring::EXTERNAL_PULLDOWN);
-    Button(uint8_t pin, ButtonWiring mode = ButtonWiring::INTERNAL_PULLUP);
+    // Button(5, ButtonWiring::INTERNAL_PULLUP, ButtonLogic::INVERTED);
+    Button(uint8_t pin,
+           ButtonWiring mode = ButtonWiring::INTERNAL_PULLUP,
+           ButtonLogic logic = ButtonLogic::NORMAL);
 
     // Initializes the GPIO pin.
     // Active LOW buttons automatically enable the internal pull-up resistor.
@@ -135,6 +147,9 @@ private:
     // EXTERNAL_PULLUP  -> The button is active LOW and uses an external pull-up resistor.
     // EXTERNAL_PULLDOWN -> The button is active HIGH and uses an external pull-down resistor.
     ButtonWiring _mode;
+
+    // Logical interpretation of the electrical input.
+    ButtonLogic _logic;
 
     // Current debounced electrical state (HIGH or LOW).
     bool _currentState;

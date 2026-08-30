@@ -13,6 +13,13 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Fixed
 
+## [1.1.0] - 2026-08-30
+
+### Added
+
+- Added an optional, constructor-only `ButtonLogic` argument with `ButtonLogic::NORMAL` (default) and `ButtonLogic::INVERTED` modes.
+- Logic inversion applies consistently to button state, edge events, long-press detection, and press/release timing without changing the configured GPIO mode.
+
 ## [1.0.3] - 2026-08-30
 
 ### Fixed
@@ -55,7 +62,8 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - PlatformIO Registry metadata.
 - Installation, wiring, examples, and API documentation.
 
-[Unreleased]: https://github.com/sbarabe/SBK_Button/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/sbarabe/SBK_Button/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/sbarabe/SBK_Button/compare/v1.0.3...v1.1.0
 [1.0.3]: https://github.com/sbarabe/SBK_Button/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/sbarabe/SBK_Button/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/sbarabe/SBK_Button/compare/v1.0.0...v1.0.1

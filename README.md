@@ -174,13 +174,15 @@ void loop()
 
 ```cpp
 Button(uint8_t pin,
-       ButtonWiring mode = ButtonWiring::INTERNAL_PULLUP);
+       ButtonWiring mode = ButtonWiring::INTERNAL_PULLUP,
+       ButtonLogic logic = ButtonLogic::NORMAL);
 ```
 
 | Parameter | Description |
 |---|---|
 | `pin` | Arduino GPIO connected to the button. |
 | `mode` | Wiring configuration: `ButtonWiring::INTERNAL_PULLUP`, `ButtonWiring::EXTERNAL_PULLUP`, or `ButtonWiring::EXTERNAL_PULLDOWN`. |
+| `logic` | Logical interpretation: `ButtonLogic::NORMAL` (default) or `ButtonLogic::INVERTED`. |
 
 ---
 
@@ -197,6 +199,28 @@ Selects how the button is wired to the microcontroller.
 | `ButtonWiring::EXTERNAL_PULLDOWN` | Uses an external pull-down resistor. Connect the button between the GPIO pin and **VCC**. |
 
 **Note:** `ButtonWiring::INTERNAL_PULLUP` is the default configuration and is recommended whenever possible because it requires no external resistor.
+
+---
+
+## ButtonLogic
+
+### `enum class ButtonLogic`
+
+Controls how the configured wiring state is interpreted by the API.
+
+| Value | Description |
+|---|---|
+| `ButtonLogic::NORMAL` | Uses the normal pressed state for the selected wiring mode. This is the default. |
+| `ButtonLogic::INVERTED` | Swaps the logical pressed and released states, including edge events and timing. |
+
+```cpp
+Button normalButton(2, ButtonWiring::INTERNAL_PULLUP, ButtonLogic::NORMAL);
+Button invertedButton(3, ButtonWiring::INTERNAL_PULLUP, ButtonLogic::INVERTED);
+```
+
+Logic inversion does not change the pin mode or its pull-up configuration; it only changes how the input state is reported.
+
+This is especially useful for physical ON/OFF switches. If the installed switch position is opposite to the desired logical state, use `ButtonLogic::INVERTED` to swap ON and OFF in software without rotating the switch or changing the device wiring.
 
 ---
 
