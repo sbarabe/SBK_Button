@@ -290,6 +290,8 @@ While released, returns the duration of the current released period in milliseco
 
 ### Clearing events
 
+Event flags are automatically reset at the start of each `update()` call, so they do not need to be cleared during normal use. The clearing functions are provided for specific control-flow needs. For example, they can mark an event as handled before another part of the same loop processes it, discard pending events when changing application modes or screens, or intentionally ignore an event that should not trigger further actions.
+
 #### `void clearJustPressed()`
 
 Clears the current `justPressed()` event.
