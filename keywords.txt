@@ -31,6 +31,8 @@ isPressed	KEYWORD2
 isReleased	KEYWORD2
 justPressed	KEYWORD2
 justReleased	KEYWORD2
+latchedState	KEYWORD2
+setLatchedState	KEYWORD2
 setLongPressDelay	KEYWORD2
 longPressDelay	KEYWORD2
 isLongPressed	KEYWORD2

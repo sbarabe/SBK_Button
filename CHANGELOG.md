@@ -13,6 +13,14 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Fixed
 
+## [1.3.0] - 2026-08-30
+
+### Added
+
+- Added `latchedState()` for push-on / push-off behavior. The state toggles once on each debounced release.
+- Added `setLatchedState(bool)` to initialize, reset, or override a button's latching state.
+- Added a latching-button example and API documentation.
+
 ## [1.2.0] - 2026-08-30
 
 ### Added
@@ -72,7 +80,8 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - PlatformIO Registry metadata.
 - Installation, wiring, examples, and API documentation.
 
-[Unreleased]: https://github.com/sbarabe/SBK_Button/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/sbarabe/SBK_Button/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/sbarabe/SBK_Button/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/sbarabe/SBK_Button/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/sbarabe/SBK_Button/compare/v1.0.3...v1.1.0
 [1.0.3]: https://github.com/sbarabe/SBK_Button/compare/v1.0.2...v1.0.3

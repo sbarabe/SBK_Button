@@ -14,6 +14,7 @@
 //   - Debouncing
 //   - Press / release detection
 //   - Long-press detection
+//   - Latching (push-on / push-off) state
 //   - Active-high or active-low inputs
 //
 // Copyright (c) 2026 Samuel Barabe
@@ -86,6 +87,14 @@ public:
     // Returns true only once when the button changes
     // from pressed to released.
     bool justReleased() const { return _justReleased; }
+
+    // Returns the latching (push-on / push-off) state.
+    // The state toggles once after each debounced press-and-release cycle.
+    bool latchedState() const { return _latchedState; }
+
+    // Sets the latching state without generating a button event.
+    // This can be used to initialize, reset, or override the state.
+    void setLatchedState(bool state) { _latchedState = state; }
 
     // Sets the delay required to recognize a long press.
     // Default value is 1000 ms.
@@ -170,6 +179,9 @@ private:
 
     // True if the button was just released.
     bool _justReleased;
+
+    // Push-on / push-off state, toggled when the button is released.
+    bool _latchedState;
 
     // True if a long press was just detected.
     bool _justLongPressed;

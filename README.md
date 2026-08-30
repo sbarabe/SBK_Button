@@ -1,6 +1,6 @@
 # SBK_Button
 
-**SBK_Button** is a lightweight push-button library for Arduino-compatible platforms. It provides the `Button` class for non-blocking debouncing, press and release events, long-press detection, and press/release duration tracking.
+**SBK_Button** is a lightweight push-button library for Arduino-compatible platforms. It provides the `Button` class for non-blocking debouncing, press and release events, push-on / push-off latching, long-press detection, and press/release duration tracking.
 
 The `Button` class supports both active-low and active-high button circuits. Active-low buttons can use the microcontroller's internal pull-up resistor or an external pull-up resistor.
 
@@ -12,6 +12,7 @@ The `Button` class supports both active-low and active-high button circuits. Act
 - Configurable software debouncing
 - Pressed and released state detection
 - One-cycle `justPressed()` and `justReleased()` events
+- Push-on / push-off latching state
 - Configurable long-press delay
 - One-cycle `justLongPressed()` event
 - Continuous `isLongPressed()` state
@@ -278,6 +279,21 @@ Returns `true` while the debounced button state is released.
 #### `bool isLongPressed() const`
 
 Returns `true` while the button is pressed and its pressed time has reached the configured long-press threshold.
+
+### Latching state
+
+#### `bool latchedState() const`
+
+Returns the button's push-on / push-off state. It starts as `false` and toggles once on every debounced release, so it can be read repeatedly without toggling again.
+
+```cpp
+button.update();
+digitalWrite(LED_BUILTIN, button.latchedState());
+```
+
+#### `void setLatchedState(bool state)`
+
+Sets the latching state without generating an event. Use it to choose an initial state, reset the latch, or override it from another part of the application.
 
 ### One-cycle events
 

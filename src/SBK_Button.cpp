@@ -21,6 +21,7 @@ Button::Button(uint8_t pin, ButtonWiring mode, ButtonLogic logic)
       _lastReading(false),
       _justPressed(false),
       _justReleased(false),
+      _latchedState(false),
       _justLongPressed(false),
       _longPressReported(false),
       _lastChangeTime(0),
@@ -111,6 +112,14 @@ void Button::update(uint32_t now)
 
     // Update the released time based on the current state.
     _releasedTimeUpdate(now);
+
+    // Toggle the push-on / push-off state only after a complete, debounced
+    // button action. Using the release edge matches the event semantics of
+    // justReleased() and prevents a held button from toggling repeatedly.
+    if (justReleased())
+    {
+        _latchedState = !_latchedState;
+    }
 
     // Handle long press detection after time has been updated to ensure accurate timing.
 
