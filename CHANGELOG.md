@@ -13,6 +13,14 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ### Fixed
 
+## [1.0.3] - 2026-08-30
+
+### Fixed
+
+- Corrected the documented wiring enum name from `ButtonMode` to `ButtonWiring`.
+- Corrected the Arduino library include metadata from `Button.h` to `SBK_Button.h`.
+- Updated the Arduino syntax-highlighting metadata to recognize `ButtonWiring`.
+
 ## [1.0.2] - 2026-07-16
 
 ### Fixed
@@ -33,7 +41,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - Initial public release of SBK_Button.
 - Non-blocking software debouncing.
 - Configurable debounce delay with a 50 ms default.
-- Three type-safe button wiring modes through `ButtonMode`:
+- Three type-safe button wiring modes through `ButtonWiring`:
   internal pull-up, external pull-up, and external pull-down.
 - Active-low and active-high button support.
 - Continuous pressed and released state queries.
@@ -47,6 +55,8 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - PlatformIO Registry metadata.
 - Installation, wiring, examples, and API documentation.
 
-[Unreleased]: https://github.com/sbarabe/SBK_Button/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/sbarabe/SBK_Button/compare/v1.0.3...HEAD
+[1.0.3]: https://github.com/sbarabe/SBK_Button/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/sbarabe/SBK_Button/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/sbarabe/SBK_Button/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/sbarabe/SBK_Button/releases/tag/v1.0.0

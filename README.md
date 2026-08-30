@@ -83,7 +83,7 @@ Connect an external pull-up resistor between the GPIO pin and VCC, and connect t
 ```cpp
 Button externalPullup(
     2,
-    ButtonMode::EXTERNAL_PULLUP);
+    ButtonWiring::EXTERNAL_PULLUP);
 ```
 
 The GPIO is configured as `INPUT` because the external resistor supplies the pull-up.
@@ -95,7 +95,7 @@ Connect an external pull-down resistor between the GPIO pin and GND, and connect
 ```cpp
 Button externalPulldown(
     2,
-    ButtonMode::EXTERNAL_PULLDOWN);
+    ButtonWiring::EXTERNAL_PULLDOWN);
 ```
 
 The GPIO is configured as `INPUT`. AVR Arduino boards do not provide an internal pull-down resistor.
@@ -174,29 +174,29 @@ void loop()
 
 ```cpp
 Button(uint8_t pin,
-       ButtonMode mode = ButtonMode::INTERNAL_PULLUP);
+       ButtonWiring mode = ButtonWiring::INTERNAL_PULLUP);
 ```
 
 | Parameter | Description |
 |---|---|
 | `pin` | Arduino GPIO connected to the button. |
-| `mode` | Wiring configuration: `ButtonMode::INTERNAL_PULLUP`, `ButtonMode::EXTERNAL_PULLUP`, or `ButtonMode::EXTERNAL_PULLDOWN`. |
+| `mode` | Wiring configuration: `ButtonWiring::INTERNAL_PULLUP`, `ButtonWiring::EXTERNAL_PULLUP`, or `ButtonWiring::EXTERNAL_PULLDOWN`. |
 
 ---
 
-## ButtonMode
+## ButtonWiring
 
-### `enum class ButtonMode`
+### `enum class ButtonWiring`
 
 Selects how the button is wired to the microcontroller.
 
 | Value | Description |
 |---|---|
-| `ButtonMode::INTERNAL_PULLUP` | Uses the MCU's internal pull-up resistor. Connect the button between the GPIO pin and **GND**. |
-| `ButtonMode::EXTERNAL_PULLUP` | Uses an external pull-up resistor. Connect the button between the GPIO pin and **GND**. |
-| `ButtonMode::EXTERNAL_PULLDOWN` | Uses an external pull-down resistor. Connect the button between the GPIO pin and **VCC**. |
+| `ButtonWiring::INTERNAL_PULLUP` | Uses the MCU's internal pull-up resistor. Connect the button between the GPIO pin and **GND**. |
+| `ButtonWiring::EXTERNAL_PULLUP` | Uses an external pull-up resistor. Connect the button between the GPIO pin and **GND**. |
+| `ButtonWiring::EXTERNAL_PULLDOWN` | Uses an external pull-down resistor. Connect the button between the GPIO pin and **VCC**. |
 
-**Note:** ButtonMode::INTERNAL_PULLUP is the default configuration and is recommended whenever possible because it requires no external resistor.
+**Note:** `ButtonWiring::INTERNAL_PULLUP` is the default configuration and is recommended whenever possible because it requires no external resistor.
 
 ---
 
@@ -290,7 +290,7 @@ Clears all three one-cycle event flags.
 - Call `update()` frequently and avoid long blocking delays.
 - Read one-cycle events after `update()` and before the next update.
 - Configure the long-press threshold with `setLongPressDelay()`.
-- `ButtonMode::INTERNAL_PULLUP` is the recommended wiring configuration whenever possible.
+- `ButtonWiring::INTERNAL_PULLUP` is the recommended wiring configuration whenever possible.
 
 ---
 

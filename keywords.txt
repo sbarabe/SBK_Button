@@ -7,7 +7,7 @@
 #######################################
 
 Button	KEYWORD1
-ButtonMode	KEYWORD1
+ButtonWiring	KEYWORD1
 
 #######################################
 # Constants (LITERAL1)
